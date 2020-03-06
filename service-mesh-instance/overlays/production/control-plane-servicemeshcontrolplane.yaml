@@ -1,0 +1,66 @@
+apiVersion: maistra.io/v1
+kind: ServiceMeshControlPlane
+metadata:
+  name: control-plane
+  namespace: istio-system
+spec:
+  istio:
+    global:
+      proxy:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 128Mi
+    gateways:
+      istio-egressgateway:
+        autoscaleEnabled: true
+        autoscaleMin: 1
+        autoscaleMax: 5
+      istio-ingressgateway:
+        autoscaleEnabled: true
+        autoscaleMin: 1
+        autoscaleMax: 5
+    mixer:
+      enabled: true
+      policy:
+        autoscaleEnabled: true
+        autoscaleMin: 1
+        autoscaleMax: 5
+      telemetry:
+        resources:
+          limits:
+            cpu: 500m
+            memory: 4G
+          requests:
+            cpu: 100m
+            memory: 1G
+    pilot:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      autoscaleEnabled: true
+      autoscaleMin: 1
+      autoscaleMax: 5
+      traceSampling: 100
+    kiali:
+      enabled: true
+    grafana:
+      enabled: true
+    tracing:
+      enabled: true
+      jaeger:
+        template: production-elasticsearch
+        elasticsearch:
+          nodeCount: 3
+          redundancyPolicy:
+          resources:
+            requests:
+              cpu: "1"
+              memory: "16Gi"
+            limits:
+              cpu: "1"
+              memory: "16Gi"
