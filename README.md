@@ -48,7 +48,7 @@ $ oc get route --namespace istio-system
 
 ## Deploying example application Bookinfo
 
-Follow the instructions in the chapter [Example Application ](https://docs.openshift.com/container-platform/4.3/service_mesh/service_mesh_day_two/ossm-example-bookinfo.html) found in the product documentation.
+Follow the instructions in the chapter [Example Application ](https://docs.openshift.com/container-platform/4.3/service_mesh/service_mesh_day_two/ossm-example-bookinfo.html) to deployt the [Bookinfo Application](https://istio.io/docs/examples/bookinfo/).
 
 ```
 $ oc new-project bookinfo
