@@ -18,7 +18,7 @@ $ oc apply --kustomize kiali-operator/base
 $ oc apply --kustomize service-mesh-operator/base
 ```
 
-You should now see operators running in the `openshift-operators` project:
+You should now see operators running in the *openshift-operators* project:
 
 ```
 oc get pod --namespace openshift-operators
