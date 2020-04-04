@@ -81,22 +81,20 @@ $ oc apply --namespace bookinfo \
 
 ### Verifying the Bookinfo installation
 
-```
-$ GATEWAY_URL=$(oc --namespace istio-system get route istio-ingressgateway --output jsonpath='{.spec.host}')
-```
+Obtain the Istio ingress hostname:
 
 ```
-$ curl --verbose http://$GATEWAY_URL/productpage
+oc get route --namespace istio-system istio-ingressgateway --output jsonpath='{.spec.host}'
 ```
 
 Obtain the Kiali endpoint hostname:
 
 ```
-$ oc get route --namespace istio-system kiali --output jsonpath='{.spec.host}')
+$ oc get route --namespace istio-system kiali --output jsonpath='{.spec.host}'
 ```
 
 Obtain the Jaeger endpoint hostname:
 
 ```
-$ oc get route --namespace istio-system jaeger --output jsonpath='{.spec.host}')
+$ oc get route --namespace istio-system jaeger --output jsonpath='{.spec.host}'
 ```
