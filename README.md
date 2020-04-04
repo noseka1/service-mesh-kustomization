@@ -1,6 +1,8 @@
 # Kustomization for Deploying Red Hat OpenShift Service Mesh
 
-Red Hat OpenShift Service Mesh product documentation can be found [here](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.3/html/service_mesh/index).
+Red Hat OpenShift Service Mesh product documentation can be found [here](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.3/html/service_mesh/index). This kustomization is based on the examples included in the product documentation.
+
+You can refer to the [Maistra Istio Operator](https://github.com/Maistra/istio-operator) project on GitHub for further documentation on the operator.
 
 ```
 $ oc apply --kustomize elasticsearch-operator/base
