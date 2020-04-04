@@ -45,3 +45,17 @@ Discover the service mesh endpoint URLs:
 ```
 $ oc get route --namespace istio-system
 ```
+
+## Deploying Booinfo sample application
+
+```
+$ oc new-project bookinfo
+```
+
+```
+$ oc patch \
+    --namespace istio-system \
+    smmr default \
+    --type json \
+    --patch '[{"op": "add", "path": "/spec/members", "value":["bookinfo"]}]'
+```
