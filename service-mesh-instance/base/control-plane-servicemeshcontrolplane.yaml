@@ -5,12 +5,23 @@ metadata:
   namespace: istio-system
 spec:
   istio:
+    global:
+      # This parameter controls whether to enable/disable Mutual Transport Layer Security (mTLS)
+      # between services by default.
+      mtls:
+        enabled: false
+      # This parameter enables/disables policy checks.
+      disablePolicyChecks: true
+      # This parameter indicates whether traffic is allowed to pass through to the Envoy sidecar
+      # when the Mixer policy service cannot be reached.
+      policyCheckFailOpen: false
     gateways:
       istio-egressgateway:
         autoscaleEnabled: false
       istio-ingressgateway:
         autoscaleEnabled: false
     mixer:
+      enabled: true
       policy:
         autoscaleEnabled: false
       telemetry:
@@ -20,6 +31,19 @@ spec:
       traceSampling: 100
     kiali:
       enabled: true
+      dashboard:
+        # When view-only mode is enabled, users cannot use the console to make changes to
+        # the Service Mesh.
+        viewOnlyMode: false
+        # If you have a custom Grafana installation that is not easily auto-detectable, update
+        # the URL value here.
+        #grafanaURL:  "https://grafana-istio-system.127.0.0.1.nip.io"
+        # If you have a custom Jaeger installation that is not easily auto-detectable by Kiali,
+        # you must update the URL value here.
+        #jaegerURL: "http://jaeger-query-istio-system.127.0.0.1.nip.io"
+      # This parameter enables/disables ingress for Kiali.
+      ingress:
+        enabled: true
     grafana:
       enabled: true
     tracing:
