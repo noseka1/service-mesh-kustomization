@@ -82,7 +82,7 @@ $ oc apply --namespace bookinfo \
 Verifying the Bookinfo installation:
 
 ```
-$ GATEWAY_URL=$(oc --namespace bookinfo get route istio-ingressgateway --output jsonpath='{.spec.host}')
+$ GATEWAY_URL=$(oc --namespace istio-system get route istio-ingressgateway --output jsonpath='{.spec.host}')
 ```
 
 ```
