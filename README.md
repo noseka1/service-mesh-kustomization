@@ -54,8 +54,8 @@ $ oc new-project bookinfo
 
 ```
 $ oc patch \
-    --namespace istio-system \
     smmr default \
+    --namespace istio-system \
     --type json \
     --patch '[{"op": "add", "path": "/spec/members", "value":["bookinfo"]}]'
 ```
