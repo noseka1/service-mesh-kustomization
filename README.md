@@ -57,5 +57,5 @@ $ oc patch \
     smmr default \
     --namespace istio-system \
     --type json \
-    --patch '[{"op": "add", "path": "/spec/members", "value":["bookinfo"]}]'
+    --patch '[{"op": "add", "path": "/spec/members/-", "value": "bookinfo"}]'
 ```
