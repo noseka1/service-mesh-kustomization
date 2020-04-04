@@ -4,7 +4,7 @@ Red Hat OpenShift Service Mesh product documentation can be found [here](https:/
 
 You can refer to the [Maistra Istio Operator](https://github.com/Maistra/istio-operator) project on GitHub for further documentation on the operator.
 
-## Deploying Service Mesh operators
+## Deploying required operators
 
 ```
 $ oc apply --kustomize elasticsearch-operator/base
