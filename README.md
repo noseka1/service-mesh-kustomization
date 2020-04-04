@@ -48,6 +48,8 @@ $ oc get route --namespace istio-system
 
 ## Deploying Booinfo sample application
 
+Follow the instructions in the chapter [Example Application ](https://docs.openshift.com/container-platform/4.3/service_mesh/service_mesh_day_two/ossm-example-bookinfo.html) found in the product documentation.
+
 ```
 $ oc new-project bookinfo
 ```
@@ -58,4 +60,31 @@ $ oc patch \
     --namespace istio-system \
     --type json \
     --patch '[{"op": "add", "path": "/spec/members/-", "value": "bookinfo"}]'
+```
+
+```
+$ oc apply \
+    --namespace bookinfo \
+    --filename https://raw.githubusercontent.com/Maistra/bookinfo/maistra-1.0/bookinfo.yaml
+```
+
+```
+$ oc apply \
+    --namespace bookinfo \
+    --filename https://raw.githubusercontent.com/Maistra/bookinfo/maistra-1.0/bookinfo-gateway.yaml
+```
+
+```
+$ oc apply --namespace bookinfo \
+    --filename https://raw.githubusercontent.com/istio/istio/release-1.1/samples/bookinfo/networking/destination-rule-all.yaml
+```
+
+Verifying the Bookinfo installation:
+
+```
+$ GATEWAY_URL=$(oc --namespace bookinfo get route istio-ingressgateway --output jsonpath='{.spec.host}')
+```
+
+```
+$ curl --verbose http://$GATEWAY_URL/productpage
 ```
