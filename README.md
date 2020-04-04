@@ -41,7 +41,7 @@ Install service mesh control plane:
 $ oc apply --kustomize service-mesh-instance/overlays/development
 ```
 
-Discover the service mesh endpoint URLs:
+Discover the service mesh endpoint hostnames:
 ```
 $ oc get route --namespace istio-system
 ```
@@ -79,7 +79,7 @@ $ oc apply --namespace bookinfo \
     --filename https://raw.githubusercontent.com/istio/istio/release-1.1/samples/bookinfo/networking/destination-rule-all.yaml
 ```
 
-Verifying the Bookinfo installation:
+### Verifying the Bookinfo installation
 
 ```
 $ GATEWAY_URL=$(oc --namespace istio-system get route istio-ingressgateway --output jsonpath='{.spec.host}')
@@ -87,4 +87,16 @@ $ GATEWAY_URL=$(oc --namespace istio-system get route istio-ingressgateway --out
 
 ```
 $ curl --verbose http://$GATEWAY_URL/productpage
+```
+
+Obtain the Kiali endpoint hostname:
+
+```
+$ oc get route --namespace istio-system kiali --output jsonpath='{.spec.host}')
+```
+
+Obtain the Jaeger endpoint hostname:
+
+```
+$ oc get route --namespace istio-system jaeger --output jsonpath='{.spec.host}')
 ```
