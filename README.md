@@ -46,7 +46,7 @@ Discover the service mesh endpoint URLs:
 $ oc get route --namespace istio-system
 ```
 
-## Deploying Booinfo sample application
+## Deploying example application Bookinfo
 
 Follow the instructions in the chapter [Example Application ](https://docs.openshift.com/container-platform/4.3/service_mesh/service_mesh_day_two/ossm-example-bookinfo.html) found in the product documentation.
 
