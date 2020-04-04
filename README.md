@@ -4,7 +4,7 @@ Red Hat OpenShift Service Mesh product documentation can be found [here](https:/
 
 You can refer to the [Maistra Istio Operator](https://github.com/Maistra/istio-operator) project on GitHub for further documentation on the operator.
 
-# Deploying Service Mesh operators
+## Deploying Service Mesh operators
 
 ```
 $ oc apply --kustomize elasticsearch-operator/base
@@ -33,7 +33,7 @@ jaeger-operator-54b947db5d-lck5w         1/1     Running   0          11h
 kiali-operator-6559fdc5bc-vspjd          1/1     Running   0          11h
 ```
 
-# Deploying Service Mesh control plane
+## Deploying Service Mesh control plane
 
 Install service mesh control plane:
 
