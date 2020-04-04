@@ -87,6 +87,8 @@ Obtain the Istio ingress hostname:
 $ oc get route --namespace istio-system istio-ingressgateway --output jsonpath='{.spec.host}'
 ```
 
+Then visit `http://<ingress_hostname>/productpage` with your browser.
+
 Obtain the Kiali endpoint hostname:
 
 ```
