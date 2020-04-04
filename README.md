@@ -84,7 +84,7 @@ $ oc apply --namespace bookinfo \
 Obtain the Istio ingress hostname:
 
 ```
-oc get route --namespace istio-system istio-ingressgateway --output jsonpath='{.spec.host}'
+$ oc get route --namespace istio-system istio-ingressgateway --output jsonpath='{.spec.host}'
 ```
 
 Obtain the Kiali endpoint hostname:
