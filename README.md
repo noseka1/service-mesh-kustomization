@@ -18,6 +18,19 @@ $ oc apply --kustomize kiali-operator/base
 $ oc apply --kustomize service-mesh-operator/base
 ```
 
+You should now see operators running in the `openshift-operators` project:
+
+```
+oc get pod --namespace openshift-operators
+NAME                                     READY   STATUS    RESTARTS   AGE
+elasticsearch-operator-6b4686b59-fz6cx   1/1     Running   0          11h
+istio-operator-5f945bd597-z89qp          1/1     Running   0          11h
+jaeger-operator-54b947db5d-lck5w         1/1     Running   0          11h
+kiali-operator-6559fdc5bc-vspjd          1/1     Running   0          11h
+```
+
+Install service mesh control plane:
+
 ```
 $ oc apply --kustomize service-mesh-instance/overlays/development
 ```
