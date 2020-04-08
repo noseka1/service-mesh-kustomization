@@ -4,6 +4,4 @@ metadata:
   name: default
   namespace: istio-system
 spec:
-  members:
-#  - your-project
-#  - another-of-your-projects
+  members: []
