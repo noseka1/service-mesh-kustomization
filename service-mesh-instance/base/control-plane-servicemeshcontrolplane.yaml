@@ -9,7 +9,7 @@ spec:
       # This parameter controls whether to enable/disable Mutual Transport Layer Security (mTLS)
       # between services by default.
       mtls:
-        enabled: false
+        enabled: true
       # This parameter enables/disables policy checks.
       disablePolicyChecks: true
       # This parameter indicates whether traffic is allowed to pass through to the Envoy sidecar
