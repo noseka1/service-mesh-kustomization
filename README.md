@@ -60,6 +60,9 @@ $ oc patch \
     --namespace istio-system \
     --type json \
     --patch '[{"op": "add", "path": "/spec/members", "value": []}]'
+```
+
+```
 $ oc patch \
     smmr default \
     --namespace istio-system \
