@@ -41,7 +41,7 @@ Install service mesh control plane:
 $ oc apply --kustomize service-mesh-instance/overlays/development
 ```
 
-Discover the service mesh endpoint hostnames:
+Wait until the service mesh control plane deploys. Discover the service mesh endpoint hostnames:
 ```
 $ oc get route --namespace istio-system
 ```
