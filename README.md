@@ -25,7 +25,7 @@ $ oc apply --kustomize service-mesh-operator/base
 You should now see operators running in the *openshift-operators* project:
 
 ```
-oc get pod --namespace openshift-operators
+$ oc get pod --namespace openshift-operators
 NAME                                     READY   STATUS    RESTARTS   AGE
 elasticsearch-operator-6b4686b59-fz6cx   1/1     Running   0          11h
 istio-operator-5f945bd597-z89qp          1/1     Running   0          11h
