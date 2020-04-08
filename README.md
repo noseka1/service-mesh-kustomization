@@ -76,7 +76,7 @@ $ oc apply \
 
 ```
 $ oc apply --namespace bookinfo \
-    --filename https://raw.githubusercontent.com/istio/istio/release-1.1/samples/bookinfo/networking/destination-rule-all.yaml
+    --filename https://raw.githubusercontent.com/istio/istio/release-1.1/samples/bookinfo/networking/destination-rule-all-mtls.yaml
 ```
 
 ### Verifying the Bookinfo installation
