@@ -111,7 +111,7 @@ $ oc get route --namespace istio-system jaeger --output jsonpath='{.spec.host}'
 
 ### Creating a TLS route for the Bookinfo application
 
-The following steps are loosely based on [this article](https://access.redhat.com/solutions/4818911).
+The following steps are based on [this article](https://access.redhat.com/solutions/4818911).
 
 Create a secret `istio-ingressgateway-certs` that holds the certificate and private key for the TLS route. You can use a certificate specific for the route's hostname or reuse the wildcard certificate:
 
