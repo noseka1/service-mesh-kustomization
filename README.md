@@ -151,7 +151,7 @@ spec:
     tls:
       mode: SIMPLE
       privateKey: /etc/istio/ingressgateway-certs/tls.key
-      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt'
+      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
 EOF
 ) | oc create --filename -
 ```
