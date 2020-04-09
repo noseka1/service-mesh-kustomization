@@ -89,7 +89,7 @@ $ oc apply --namespace bookinfo \
 
 ### Verifying the Bookinfo installation
 
-Obtain the Istio ingress route hostname:
+Obtain a hostname of the Istio ingress route:
 
 ```
 $ oc get route --namespace istio-system istio-ingressgateway --output jsonpath='{.spec.host}'
@@ -165,7 +165,7 @@ $ oc create route passthrough \
     --port https
 ```
 
-Obtain the Istio ingress route hostname:
+Obtain a hostname of the Istio ingress route:
 
 ```
 $ oc get route --namespace istio-system istio-ingressgateway-tls --output jsonpath='{.spec.host}'
