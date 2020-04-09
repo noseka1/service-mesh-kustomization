@@ -108,3 +108,66 @@ Obtain the Jaeger endpoint hostname:
 ```
 $ oc get route --namespace istio-system jaeger --output jsonpath='{.spec.host}'
 ```
+
+### Creating a TLS route for the Bookinfo application
+
+The following steps are loosely based on [this article](https://access.redhat.com/solutions/4818911).
+
+Create a secret `istio-ingressgateway-certs` that holds the certificate and private key:
+
+```
+$ oc create secret tls \
+    istio-ingressgateway-certs \
+    --namespace istio-system \
+    --cert wildcard.apps.mycluster.example.com.crt \
+    --key wildcard.apps.mycluster.example.com.key
+```
+
+Remove the original plain-HTTP bookinfo gateway:
+
+```
+$ oc delete gateway bookinfo-gateway --namespace bookinfo
+```
+
+Create an HTTPS gateway instead:
+
+```
+$ (cat <<EOF
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: bookinfo-gateway-tls
+  namespace: bookinfo
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - '*'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      privateKey: /etc/istio/ingressgateway-certs/tls.key
+      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt'
+EOF
+) | oc create --filename -
+```
+
+```
+$ oc create route passthrough \
+    istio-ingressgateway-tls \
+    --namespace istio-system \
+    --service istio-ingressgateway \
+    --port https
+```
+
+Obtain the Istio ingress hostname:
+
+```
+$ oc get route --namespace istio-system istio-ingressgateway-tls --output jsonpath='{.spec.host}'
+```
+
+Then visit `https://<ingress_hostname>/productpage` with your browser.
