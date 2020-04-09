@@ -136,7 +136,7 @@ $ (cat <<EOF
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: bookinfo-gateway-tls
+  name: bookinfo-gateway
   namespace: bookinfo
 spec:
   selector:
