@@ -89,13 +89,13 @@ $ oc apply --namespace bookinfo \
 
 ### Verifying the Bookinfo installation
 
-Obtain the Istio ingress hostname:
+Obtain the Istio ingress route hostname:
 
 ```
 $ oc get route --namespace istio-system istio-ingressgateway --output jsonpath='{.spec.host}'
 ```
 
-Then visit `http://<ingress_hostname>/productpage` with your browser.
+Then visit `http://<route_hostname>/productpage` with your browser.
 
 Obtain the Kiali endpoint hostname:
 
@@ -155,6 +155,7 @@ spec:
 EOF
 ) | oc create --filename -
 ```
+Create a passthrough route which sends the traffic to the Istio ingress gateway:
 
 ```
 $ oc create route passthrough \
@@ -164,10 +165,10 @@ $ oc create route passthrough \
     --port https
 ```
 
-Obtain the Istio ingress hostname:
+Obtain the Istio ingress route hostname:
 
 ```
 $ oc get route --namespace istio-system istio-ingressgateway-tls --output jsonpath='{.spec.host}'
 ```
 
-Then visit `https://<ingress_hostname>/productpage` with your browser.
+Then visit `https://<route_hostname>/productpage` with your browser.
