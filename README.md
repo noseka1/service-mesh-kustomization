@@ -87,7 +87,7 @@ $ (cat <<EOF
 apiVersion: maistra.io/v1
 kind: ServiceMeshMember
 metadata:
-  name: bookinfo
+  name: default
   namespace: bookinfo
 spec:
   controlPlaneRef:
