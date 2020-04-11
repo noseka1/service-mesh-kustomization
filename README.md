@@ -172,3 +172,17 @@ $ oc get route --namespace istio-system istio-ingressgateway-tls --output jsonpa
 ```
 
 Then visit `https://<route_hostname>/productpage` with your browser.
+
+## Troubleshooting
+
+Collect debugging data about the currently running Openshift cluster:
+
+```
+$ oc adm must-gather
+```
+
+Collect debugging information specific to OpenShift Service Mesh:
+
+```
+$ oc adm must-gather --image registry.redhat.io/openshift-service-mesh/istio-must-gather-rhel7:latest
+```
