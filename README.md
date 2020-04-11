@@ -52,7 +52,24 @@ Install service mesh control plane:
 $ oc apply --kustomize service-mesh-instance/overlays/development
 ```
 
-Wait until the service mesh control plane deploys. Discover the service mesh endpoint hostnames:
+Wait until the service mesh control plane deploys. Verify that the Kubernetes resources deployed successfully:
+
+```
+$ oc get --kustomize service-mesh-instance/overlays/development
+NAME                     STATUS   AGE
+namespace/istio-system   Active   116s
+
+NAME                                               READY   STATUS              TEMPLATE   VERSION   AGE
+servicemeshcontrolplane.maistra.io/control-plane   9/9     InstallSuccessful   default    v1.1      116s
+
+NAME                                       READY   STATUS       AGE
+servicemeshmemberroll.maistra.io/default   0/0     Configured   115s
+```
+
+## Discovering Service Mesh endpoints
+
+Discover the service mesh endpoint hostnames:
+
 ```
 $ oc get route --namespace istio-system
 ```
