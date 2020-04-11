@@ -22,6 +22,17 @@ $ oc apply --kustomize kiali-operator/base
 $ oc apply --kustomize service-mesh-operator/base
 ```
 
+Make sure that the csvs deployed successfully:
+
+```
+oc get csv --namespace openshift-operators
+NAME                                         DISPLAY                          VERSION               REPLACES                              PHASE
+elasticsearch-operator.4.3.10-202003311428   Elasticsearch Operator           4.3.10-202003311428                                         Succeeded
+jaeger-operator.v1.17.1                      Red Hat OpenShift Jaeger         1.17.1                jaeger-operator.v1.13.1               Succeeded
+kiali-operator.v1.12.7                       Kiali Operator                   1.12.7                kiali-operator.v1.0.12                Succeeded
+servicemeshoperator.v1.1.0                   Red Hat OpenShift Service Mesh   1.1.0                 servicemeshoperator.v1.0.10           Succeeded
+```
+
 You should now see operators running in the *openshift-operators* project:
 
 ```
