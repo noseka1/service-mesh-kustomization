@@ -83,19 +83,18 @@ $ oc new-project bookinfo
 ```
 
 ```
-$ oc patch \
-    smmr default \
-    --namespace istio-system \
-    --type json \
-    --patch '[{"op": "add", "path": "/spec/members", "value": []}]'
-```
-
-```
-$ oc patch \
-    smmr default \
-    --namespace istio-system \
-    --type json \
-    --patch '[{"op": "add", "path": "/spec/members/-", "value": "bookinfo"}]'
+$ (cat <<EOF
+apiVersion: maistra.io/v1
+kind: ServiceMeshMember
+metadata:
+  name: bookinfo
+  namespace: bookinfo
+spec:
+  controlPlaneRef:
+    name: control-plane
+    namespace: istio-system
+EOF
+) | oc apply --filename -
 ```
 
 ```
@@ -181,7 +180,7 @@ spec:
       privateKey: /etc/istio/ingressgateway-certs/tls.key
       serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
 EOF
-) | oc create --filename -
+) | oc apply --filename -
 ```
 Create a passthrough route which sends the traffic to the Istio ingress gateway:
 
