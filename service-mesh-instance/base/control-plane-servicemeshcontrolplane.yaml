@@ -10,11 +10,19 @@ spec:
       # between services by default.
       mtls:
         enabled: true
-      # This parameter enables/disables policy checks.
+      # Set the following variable to true to disable policy checks by the Mixer.
+      # Note that metrics will still be reported to the Mixer.
       disablePolicyChecks: true
       # This parameter indicates whether traffic is allowed to pass through to the Envoy sidecar
       # when the Mixer policy service cannot be reached.
       policyCheckFailOpen: false
+      # Set the default behavior of the sidecar for handling outbound traffic from the application:
+      # ALLOW_ANY - outbound traffic to unknown destinations will be allowed, in case there are no
+      #   services or ServiceEntries for the destination port
+      # REGISTRY_ONLY - restrict outbound traffic to services defined in the service registry as well
+      #   as those defined through ServiceEntries
+      outboundTrafficPolicy:
+        mode: ALLOW_ANY
     gateways:
       istio-egressgateway:
         autoscaleEnabled: false
