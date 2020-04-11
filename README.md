@@ -68,7 +68,7 @@ servicemeshmemberroll.maistra.io/default   0/0     Configured   115s
 
 ## Discovering Service Mesh endpoints
 
-Discover the service mesh endpoint hostnames:
+Discover the hostnames of service mesh endpoints:
 
 ```
 $ oc get route --namespace istio-system
