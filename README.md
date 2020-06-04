@@ -201,7 +201,11 @@ $ oc get route \
     --output jsonpath='{.items[*].spec.host}'
 ```
 
-You can choose to create your custom passthrough route using:
+Then visit `https://<route_hostname>/productpage` with your browser.
+
+#### Creating a custom TLS route
+
+The TLS route in the previous section was created automatically by the Istio OpenShift Routing. You can choose to create your custom passthrough route to better control its parameters. For example:
 
 ```
 $ oc create route passthrough \
