@@ -63,13 +63,13 @@ Wait until the service mesh control plane deploys. Verify that the Kubernetes re
 ```
 $ oc get --kustomize service-mesh-instance/overlays/development
 NAME                     STATUS   AGE
-namespace/istio-system   Active   116s
+namespace/istio-system   Active   2m23s
 
 NAME                                               READY   STATUS              TEMPLATE   VERSION   AGE
-servicemeshcontrolplane.maistra.io/control-plane   9/9     InstallSuccessful   default    v1.1      116s
+servicemeshcontrolplane.maistra.io/control-plane   9/9     InstallSuccessful   default    v1.1      2m23s
 
 NAME                                       READY   STATUS       AGE
-servicemeshmemberroll.maistra.io/default   0/0     Configured   115s
+servicemeshmemberroll.maistra.io/default   0/0     Configured   2m23s
 ```
 
 ## Discovering Service Mesh endpoints
