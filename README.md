@@ -122,7 +122,7 @@ $ oc apply --namespace bookinfo \
 
 ### Verifying the Bookinfo installation
 
-Obtain a hostname of the Istio ingress route:
+Obtain a hostname of the Istio ingress route that was created automatically by Istio OpenShift Routing:
 
 ```
 $ oc get route \
@@ -191,20 +191,31 @@ spec:
 EOF
 ) | oc apply --filename -
 ```
-Create a passthrough route which sends the traffic to the Istio ingress gateway:
+
+Obtain a hostname of the Istio ingress route that was created automatically by Istio OpenShift Routing:
+
+```
+$ oc get route \
+    --namespace istio-system \
+    --selector maistra.io/gateway-name=bookinfo-gateway,maistra.io/gateway-namespace=bookinfo \
+    --output jsonpath='{.items[*].spec.host}'
+```
+
+You can choose to create your custom passthrough route using:
 
 ```
 $ oc create route passthrough \
-    istio-ingressgateway-tls \
+    bookinfo \
     --namespace istio-system \
     --service istio-ingressgateway \
     --port https
+    --hostname bookinfo
 ```
 
-Obtain a hostname of the Istio ingress route:
+Obtain a hostname of the custom route:
 
 ```
-$ oc get route --namespace istio-system istio-ingressgateway-tls --output jsonpath='{.spec.host}'
+$ oc get route --namespace istio-system bookinfo --output jsonpath='{.spec.host}'
 ```
 
 Then visit `https://<route_hostname>/productpage` with your browser.
