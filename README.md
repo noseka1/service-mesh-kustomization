@@ -125,7 +125,10 @@ $ oc apply --namespace bookinfo \
 Obtain a hostname of the Istio ingress route:
 
 ```
-$ oc get route --namespace istio-system istio-ingressgateway --output jsonpath='{.spec.host}'
+$ oc get route \
+    --namespace istio-system \
+    --selector maistra.io/gateway-name=bookinfo-gateway,maistra.io/gateway-namespace=bookinfo \
+    --output jsonpath='{.items[*].spec.host}'
 ```
 
 Then visit `http://<route_hostname>/productpage` with your browser.
