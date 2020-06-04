@@ -26,22 +26,28 @@ Make sure that the csvs deployed successfully:
 
 ```
 $ oc get csv --namespace openshift-operators
-NAME                                         DISPLAY                          VERSION               REPLACES                              PHASE
-elasticsearch-operator.4.3.10-202003311428   Elasticsearch Operator           4.3.10-202003311428                                         Succeeded
-jaeger-operator.v1.17.1                      Red Hat OpenShift Jaeger         1.17.1                jaeger-operator.v1.13.1               Succeeded
-kiali-operator.v1.12.7                       Kiali Operator                   1.12.7                kiali-operator.v1.0.12                Succeeded
-servicemeshoperator.v1.1.0                   Red Hat OpenShift Service Mesh   1.1.0                 servicemeshoperator.v1.0.10           Succeeded
+NAME                                         DISPLAY                          VERSION               REPLACES   PHASE
+elasticsearch-operator.4.3.23-202005270305   Elasticsearch Operator           4.3.23-202005270305              Succeeded
+jaeger-operator.v1.17.2                      Red Hat OpenShift Jaeger         1.17.2                           Succeeded
+kiali-operator.v1.12.12                      Kiali Operator                   1.12.12                          Succeeded
+servicemeshoperator.v1.1.2.2                 Red Hat OpenShift Service Mesh   1.1.2+2                          Succeeded
 ```
 
 You should now see the operators running in the *openshift-operators* project:
 
 ```
 $ oc get pod --namespace openshift-operators
-NAME                                     READY   STATUS    RESTARTS   AGE
-elasticsearch-operator-6b4686b59-fz6cx   1/1     Running   0          11h
-istio-operator-5f945bd597-z89qp          1/1     Running   0          11h
-jaeger-operator-54b947db5d-lck5w         1/1     Running   0          11h
-kiali-operator-6559fdc5bc-vspjd          1/1     Running   0          11h
+NAME                                      READY   STATUS    RESTARTS   AGE
+elasticsearch-operator-5646d8fd56-8qt6n   1/1     Running   0          13m
+istio-node-49dwm                          2/2     Running   0          10m
+istio-node-5cgxr                          2/2     Running   0          10m
+istio-node-6688f                          2/2     Running   0          10m
+istio-node-7qsgh                          2/2     Running   0          10m
+istio-node-ddtkf                          2/2     Running   0          10m
+istio-node-hl7mf                          2/2     Running   0          10m
+istio-operator-5666475df8-b2648           1/1     Running   0          12m
+jaeger-operator-b8fd89b48-5tdn5           1/1     Running   0          12m
+kiali-operator-6459ff7f99-kjprc           2/2     Running   0          12m
 ```
 
 ## Deploying Service Mesh control plane
