@@ -1,6 +1,6 @@
 # Istio TestApp
 
-A minimalistic application that can be deployed on Istio service mesh. The application consists of one service that is expose via Istio gateway.
+A minimalistic application that can be deployed on Istio service mesh. The application consists of one service that is exposed via Istio gateway.
 
 Application works on a Service Mesh that has mTLS enabled by default.
 
