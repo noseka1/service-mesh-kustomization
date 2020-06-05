@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp
+  namespace: istio-testapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: testapp
+    spec:
+      containers:
+      - name: main
+        image: registry.redhat.io/rhscl/httpd-24-rhel7
+        # The container port must be declared, otherwise Istio won't
+        # forward the traffic to the container correctly!
+        ports:
+        - containerPort: 8080
