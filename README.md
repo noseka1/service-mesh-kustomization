@@ -122,7 +122,7 @@ $ oc apply --namespace bookinfo \
 
 ### Verifying the Bookinfo installation
 
-Obtain a hostname of the Istio ingress route that was created automatically by Istio OpenShift Routing:
+Obtain a hostname of the Istio ingress route that was created automatically by [Istio OpenShift Routing](https://docs.openshift.com/container-platform/4.4/service_mesh/service_mesh_day_two/ossm-auto-route.html):
 
 ```
 $ oc get route \
@@ -205,7 +205,7 @@ Then visit `https://<route_hostname>/productpage` with your browser.
 
 #### Creating a custom TLS route
 
-The TLS route in the previous section was created automatically by the Istio OpenShift Routing. You can choose to create your custom passthrough route to better control its parameters. For example:
+In the previous section, the TLS route was created automatically by the Istio OpenShift Routing. You can choose to create your custom passthrough route to better control its parameters. For example:
 
 ```
 $ oc create route passthrough \
