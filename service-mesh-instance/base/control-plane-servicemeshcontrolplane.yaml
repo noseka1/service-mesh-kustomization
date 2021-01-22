@@ -1,61 +1,60 @@
-apiVersion: maistra.io/v1
+apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
   name: control-plane
   namespace: istio-system
 spec:
-  istio:
-    global:
-      # This parameter controls whether to enable/disable Mutual Transport Layer Security (mTLS)
-      # between services by default.
-      mtls:
-        enabled: true
-      # Set the following variable to true to disable policy checks by the Mixer.
-      # Note that metrics will still be reported to the Mixer.
-      disablePolicyChecks: true
-      # policyCheckFailOpen allows traffic in cases when the mixer policy service cannot be reached.
-      # Default is false which means the traffic is denied when the client is unable to connect to Mixer.
-      policyCheckFailOpen: false
-      # Set the default behavior of the sidecar for handling outbound traffic from the application:
-      # ALLOW_ANY - outbound traffic to unknown destinations will be allowed, in case there are no
-      #   services or ServiceEntries for the destination port
-      # REGISTRY_ONLY - restrict outbound traffic to services defined in the service registry as well
-      #   as those defined through ServiceEntries
-      outboundTrafficPolicy:
-        mode: ALLOW_ANY
-    gateways:
-      istio-egressgateway:
-        autoscaleEnabled: false
-      istio-ingressgateway:
-        autoscaleEnabled: false
-        ior_enabled: true
-    mixer:
+  proxy:
+    networking:
+      trafficControl:
+        inbound: {}
+        outbound:
+          policy: ALLOW_ANY
+  gateways:
+    ingress:
+      runtime:
+        deployment:
+          autoScaling:
+            enabled: false
+      service: {}
+    egress:
+      runtime:
+        deployment:
+          autoScaling:
+            enabled: false
+      service: {}
+    openshiftRoute:
       enabled: true
-      policy:
-        autoscaleEnabled: false
-      telemetry:
-        autoscaleEnabled: false
-    pilot:
-      autoscaleEnabled: false
-      traceSampling: 100
-    kiali:
-      enabled: true
-      dashboard:
-        # When view-only mode is enabled, users cannot use the console to make changes to
-        # the Service Mesh.
-        viewOnlyMode: false
-        # If you have a custom Grafana installation that is not easily auto-detectable, update
-        # the URL value here.
-        #grafanaURL:  "https://grafana-istio-system.127.0.0.1.nip.io"
-        # If you have a custom Jaeger installation that is not easily auto-detectable by Kiali,
-        # you must update the URL value here.
-        #jaegerURL: "http://jaeger-query-istio-system.127.0.0.1.nip.io"
-      # This parameter enables/disables ingress for Kiali.
-      ingress:
-        enabled: true
+  policy:
+    type: Istiod
+  telemetry:
+    type: Istiod
+  tracing:
+    type: Jaeger
+  addons:
     grafana:
       enabled: true
-    tracing:
+    jaeger:
+      install:
+        storage:
+          type: Memory
+        ingress: {}
+    kiali:
       enabled: true
-      jaeger:
-        template: all-in-one
+      install:
+        dashboard:
+          viewOnly: false
+        service:
+          ingress:
+            enabled: true
+  security:
+    dataPlane:
+      mtls: true
+  runtime:
+    components:
+      pilot:
+        deployment:
+          autoScaling:
+            enabled: false
+  profiles:
+  - default
