@@ -4,16 +4,22 @@ metadata:
   name: control-plane
   namespace: istio-system
 spec:
+  general:
+    logging:
+      componentLevels:
+        default: info
   proxy:
-    # Set accessLogFile to empty string to disable access log.
-    accessLogFile: /dev/stdout
+    accessLogging:
+      file:
+        # Set accessLogFile to empty string to disable access log.
+        name: /dev/stdout
 
-    # Set accessLogEncoding to JSON or TEXT to configure sidecar access log
-    accessLogEncoding: TEXT
+        # Set accessLogEncoding to JSON or TEXT to configure sidecar access log
+        encoding: TEXT
 
-    # If accessLogEncoding is TEXT, value will be used directly as the log format
-    # example: "[%START_TIME%] %REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%\n"
-    # If AccessLogEncoding is JSON, value will be parsed as map[string]string
-    # example: '{"start_time": "%START_TIME%", "req_method": "%REQ(:METHOD)%"}'
-    # Leave empty to use default log format
-    accessLogFormat: ''
+        # If accessLogEncoding is TEXT, value will be used directly as the log format
+        # example: "[%START_TIME%] %REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%\n"
+        # If AccessLogEncoding is JSON, value will be parsed as map[string]string
+        # example: '{"start_time": "%START_TIME%", "req_method": "%REQ(:METHOD)%"}'
+        # Leave empty to use default log format
+        format: ''
