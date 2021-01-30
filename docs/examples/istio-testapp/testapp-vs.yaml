@@ -4,7 +4,7 @@ metadata:
   name: testapp
 spec:
   hosts:
-  - '*'
+  - http-testapp.@@ROUTER_DOMAIN@@
   gateways:
   - testapp
   http:
