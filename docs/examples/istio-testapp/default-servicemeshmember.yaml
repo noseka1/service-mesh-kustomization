@@ -2,7 +2,6 @@ apiVersion: maistra.io/v1
 kind: ServiceMeshMember
 metadata:
   name: default
-  namespace: istio-testapp
 spec:
   # Register this namespace with the Istio control plane:
   controlPlaneRef:
