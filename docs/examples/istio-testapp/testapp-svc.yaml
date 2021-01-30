@@ -5,12 +5,8 @@ metadata:
 spec:
   ports:
   - name: http
-    protocol: TCP
     port: 8080
-    targetPort: 8080
   - name: https
-    protocol: TCP
     port: 8443
-    targetPort: 8443
   selector:
     app: testapp
