@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: testapp-tls
+spec:
+  hosts:
+  - tls-testapp.@@ROUTER_DOMAIN@@
+  gateways:
+  - testapp-tls
+  http:
+  - route:
+    - destination:
+        host: testapp
+        port:
+          number: 8080

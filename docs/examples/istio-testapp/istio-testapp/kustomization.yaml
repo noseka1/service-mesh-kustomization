@@ -7,6 +7,8 @@ resources:
 - default-servicemeshmember.yaml
 - istio-testapp-ns.yaml
 - testapp-deployment.yaml
-- testapp-gw.yaml
+- testapp-http-gw.yaml
+- testapp-http-vs.yaml
 - testapp-svc.yaml
-- testapp-vs.yaml
+- testapp-tls-gw.yaml
+- testapp-tls-vs.yaml
