@@ -12,3 +12,7 @@ resources:
 - testapp-svc.yaml
 - testapp-tls-edge-gw.yaml
 - testapp-tls-edge-vs.yaml
+- testapp-tls-mutual-gw.yaml
+- testapp-tls-mutual-vs.yaml
+- testapp-tls-passthrough-gw.yaml
+- testapp-tls-passthrough-vs.yaml
