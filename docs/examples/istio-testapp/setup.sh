@@ -24,12 +24,13 @@ kustomize build . | oc apply --filename -
 
 cd ..
 
+CURL="curl --fail --retry 10 --retry-delay 5"
 TEST_URL=testapp-http.$ROUTER_DOMAIN/status/200
 echo Testing $TEST_URL ...
-curl --fail $TEST_URL
+$CURL $TEST_URL
 echo OK
 
 TEST_URL=https://testapp-tls-edge.$ROUTER_DOMAIN/status/200
 echo Testing $TEST_URL ...
-curl --fail -k $TEST_URL
+$CURL -k $TEST_URL
 echo OK
