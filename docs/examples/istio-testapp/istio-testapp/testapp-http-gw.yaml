@@ -12,4 +12,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - http-testapp.@@ROUTER_DOMAIN@@
+    - testapp-http.@@ROUTER_DOMAIN@@

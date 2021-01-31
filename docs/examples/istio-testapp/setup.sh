@@ -24,12 +24,12 @@ kustomize build . | oc apply --filename -
 
 cd ..
 
-TEST_URL=http-testapp.$ROUTER_DOMAIN/status/200
+TEST_URL=testapp-http.$ROUTER_DOMAIN/status/200
 echo Testing $TEST_URL ...
 curl --fail $TEST_URL
 echo OK
 
-TEST_URL=https://tls-testapp.$ROUTER_DOMAIN/status/200
+TEST_URL=https://testapp-tls-edge.$ROUTER_DOMAIN/status/200
 echo Testing $TEST_URL ...
 curl --fail -k $TEST_URL
 echo OK

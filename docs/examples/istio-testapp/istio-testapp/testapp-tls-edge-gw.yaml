@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: testapp-tls
+  name: testapp-tls-edge
 spec:
   selector:
     # Use istio default ingress gateway
@@ -12,7 +12,7 @@ spec:
       name: https
       protocol: HTTPS
     hosts:
-    - tls-testapp.@@ROUTER_DOMAIN@@
+    - testapp-tls-edge.@@ROUTER_DOMAIN@@
     tls:
       mode: SIMPLE
       credentialName: testapp-tls

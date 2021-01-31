@@ -10,5 +10,5 @@ resources:
 - testapp-http-gw.yaml
 - testapp-http-vs.yaml
 - testapp-svc.yaml
-- testapp-tls-gw.yaml
-- testapp-tls-vs.yaml
+- testapp-tls-edge-gw.yaml
+- testapp-tls-edge-vs.yaml
