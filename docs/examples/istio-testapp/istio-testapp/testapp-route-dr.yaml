@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: testapp-route-header
+  name: testapp-route
 spec:
   host: testapp-route
   subsets:
