@@ -12,6 +12,8 @@ resources:
 - testapp-route-dr.yaml
 - testapp-route-header-gw.yaml
 - testapp-route-header-vs.yaml
+- testapp-route-mirror-gw.yaml
+- testapp-route-mirror-vs.yaml
 - testapp-route-svc.yaml
 - testapp-route-v1-deployment.yaml
 - testapp-route-v2-deployment.yaml
