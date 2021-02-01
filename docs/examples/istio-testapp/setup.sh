@@ -48,3 +48,14 @@ TEST_URL=https://testapp-tls-passthrough.$ROUTER_DOMAIN/status/200
 echo Testing $TEST_URL ...
 $CURL -k $TEST_URL
 echo OK
+
+TEST_URL=http://testapp-route-header.$ROUTER_DOMAIN
+echo Testing $TEST_URL ...
+RESULT=$($CURL $TEST_URL)
+if [ "$RESULT" != testapp-route-v1 ]; then
+  echo Check failed
+fi
+RESULT=$($CURL -H 'x-version: v2' $TEST_URL)
+if [ "$RESULT" != testapp-route-v2 ]; then
+  echo Check failed
+fi
