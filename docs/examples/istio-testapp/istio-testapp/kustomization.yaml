@@ -26,3 +26,8 @@ resources:
 - testapp-tls-mutual-vs.yaml
 - testapp-tls-passthrough-gw.yaml
 - testapp-tls-passthrough-vs.yaml
+- testapp-zones-deployment.yaml
+- testapp-zones-dr.yaml
+- testapp-zones-gw.yaml
+- testapp-zones-svc.yaml
+- testapp-zones-vs.yaml
