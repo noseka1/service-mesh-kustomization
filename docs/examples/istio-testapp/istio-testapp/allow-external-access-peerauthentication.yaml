@@ -2,7 +2,6 @@ apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
 metadata:
   name: allow-external-access
-  namespace: istio-testapp
 spec:
   mtls:
     mode: PERMISSIVE

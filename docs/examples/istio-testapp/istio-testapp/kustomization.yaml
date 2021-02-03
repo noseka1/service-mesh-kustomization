@@ -4,6 +4,9 @@ kind: Kustomization
 namespace: istio-testapp
 
 resources:
+- access-external-services.yaml
+- allow-external-access-netpol.yaml
+- allow-external-access-peerauthentication.yaml
 - default-servicemeshmember.yaml
 - istio-testapp-ns.yaml
 - testapp-deployment.yaml
