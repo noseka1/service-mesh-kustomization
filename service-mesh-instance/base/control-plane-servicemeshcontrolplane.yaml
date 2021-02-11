@@ -6,6 +6,10 @@ metadata:
 spec:
   # A complete example of maistra.io/v2 ServiceMeshControlPlane can be found at:
   # https://github.com/maistra/istio-operator/blob/maistra-2.0/pkg/apis/maistra/v2/smcp_new.yaml
+  general:
+    # Configures the control plane to add validationMessages to the status fields
+    # of istio.io resource
+    validationMessages: true
   proxy:
     networking:
       trafficControl:
