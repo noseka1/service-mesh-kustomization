@@ -28,6 +28,11 @@ spec:
             minReplicas: 1
             maxReplicas: 5
   addons:
+    grafana:
+      install:
+        persistence:
+          enabled: true
+          accessMode: ReadWriteOnce
     jaeger:
       install:
         storage:
