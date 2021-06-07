@@ -19,7 +19,7 @@ $ oc apply --kustomize kiali-operator/base
 ```
 
 ```
-$ oc apply --kustomize service-mesh-operator/base
+$ oc apply --kustomize service-mesh-operator/overlays/development
 ```
 
 Make sure that the csvs deployed successfully:
