@@ -139,6 +139,12 @@ Obtain the Kiali endpoint hostname:
 $ oc get route --namespace istio-system kiali --output jsonpath='{.spec.host}'
 ```
 
+Obtain the Grafana endpoint hostname:
+
+```
+$ oc get route --namespace istio-system grafana --output jsonpath='{.spec.host}'
+```
+
 Obtain the Jaeger endpoint hostname:
 
 ```
