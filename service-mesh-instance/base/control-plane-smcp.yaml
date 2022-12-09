@@ -4,7 +4,7 @@ metadata:
   name: control-plane
   namespace: istio-system
 spec:
-  version: v2.1
+  version: v2.3
   # A complete example of maistra.io/v2 ServiceMeshControlPlane can be found at:
   # https://github.com/maistra/istio-operator/blob/maistra-2.0/pkg/apis/maistra/v2/smcp_new.yaml
   general:
