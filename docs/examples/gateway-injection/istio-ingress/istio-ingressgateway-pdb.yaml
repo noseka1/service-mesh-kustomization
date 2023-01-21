@@ -6,4 +6,4 @@ spec:
   minAvailable: 1
   selector:
     matchLabels:
-      istio: ingressgateway
+      istio: ingressgateway-custom

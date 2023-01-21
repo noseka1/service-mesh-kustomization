@@ -5,7 +5,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      istio: ingressgateway
+      istio: ingressgateway-custom
   ingress:
     - {}
   policyTypes:

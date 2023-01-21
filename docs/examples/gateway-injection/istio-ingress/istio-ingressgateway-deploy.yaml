@@ -5,13 +5,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      istio: ingressgateway
+      istio: ingressgateway-custom
   template:
     metadata:
       annotations:
         inject.istio.io/templates: gateway
       labels:
-        istio: ingressgateway
+        istio: ingressgateway-custom
         sidecar.istio.io/inject: "true"
     spec:
       containers:
