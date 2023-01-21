@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: http
-        image: quay.io/noseka1/openshift-toolbox:full
+        image: quay.io/noseka1/toolbox-container:full
         command:
         - /bin/sh
         args:
