@@ -1,0 +1,66 @@
+# Service Mesh ingress gateway using MetalLB
+
+In this article, we will create a custom Service Mesh ingress gateway as decribed in the [Deploying automatic gateway injection](https://docs.openshift.com/container-platform/4.12/service_mesh/v2x/ossm-traffic-manage.html#ossm-deploying-automatic-gateway-injection_traffic-management) section of OpenShift documentation.
+
+We will use a LoadBalancer service to expose the Service Mesh gateway to the outside of the OpenShift cluster. We assume that MetalLB has already been deployed and configured to provide the external IP for the LoadBalancer service.
+
+After deploying the custom Service Mesh ingress gateway, we will deploy a sample application that will be reachable through the gateway.
+
+Edit the IP address that will be assigned to the Service Mesh ingress gateway by MetalLB. Set the *spec.loadBalancerIP* field to an IP address from the IP address range that you configured in MetalLB:
+
+```
+$ vi istio-ingress/istio-ingressgateway-svc.yaml
+```
+
+Deploy the custom Service Mesh ingress gateway:
+
+```
+$ oc apply -k istio-ingress
+```
+
+Verify that the custom Service Mesh was assigned an external IP from MetalLB:
+
+```
+$ oc get svc -n istio-ingress istio-ingressgateway
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                      AGE
+istio-ingressgateway   LoadBalancer   172.30.250.157   192.168.20.16   80:32623/TCP,443:31153/TCP   2d14h
+```
+
+Verify that the custom Service Mesh ingress gateway is up and running:
+
+```
+$ oc get po -n istio-ingress
+NAME                                   READY   STATUS    RESTARTS   AGE
+istio-ingressgateway-8cd566d7f-bdj59   1/1     Running   4          2d12h
+istio-ingressgateway-8cd566d7f-bfctz   1/1     Running   4          2d12h
+```
+
+Deploy the sample application:
+
+```
+$ oc apply -k istio-ingress-testapp
+```
+
+Verify that the sample application is running:
+
+```
+$ oc get po -n istio-ingress-testapp
+NAME                       READY   STATUS    RESTARTS   AGE
+testapp-5475b846cd-p8jbv   2/2     Running   8          2d12h
+```
+
+You can now reach the application (replace the IP address with your IP address):
+
+```
+$ curl -H 'Host: testapp-http.example.com' 192.168.20.16:80
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+    <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+      <title>httpbin(1): HTTP Client Testing Service</title>
+...
+```
+
+Note that the above command-line output was shortened.
