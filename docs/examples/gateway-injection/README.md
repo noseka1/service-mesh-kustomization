@@ -26,6 +26,12 @@ Edit the IP address that will be assigned to the Service Mesh ingress gateway by
 $ vi istio-ingress-gateway/istio-ingressgateway-svc.yaml
 ```
 
+Generate a server certificate that will be used for the TLS endpoint by typing:
+
+```
+$ ./setup.sh
+```
+
 Deploy the custom Service Mesh ingress gateway:
 
 ```
