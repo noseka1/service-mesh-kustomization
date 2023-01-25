@@ -10,3 +10,5 @@ resources:
 - testapp-svc.yaml
 - testapp-http-gw.yaml
 - testapp-http-vs.yaml
+- testapp-https-gw.yaml
+- testapp-https-vs.yaml

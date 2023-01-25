@@ -3,6 +3,15 @@ kind: Kustomization
 
 namespace: istio-ingress
 
+secretGenerator:
+- name: testapp-tls
+  type: Opaque
+  files:
+  - key=testapp-tls.key
+  - cert=testapp-tls.crt
+  options:
+    disableNameSuffixHash: True
+
 resources:
 - istio-ingressgateway-deploy.yaml
 - istio-ingressgateway-hpa.yaml
