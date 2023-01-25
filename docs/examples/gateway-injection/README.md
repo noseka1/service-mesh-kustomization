@@ -83,7 +83,7 @@ NAME                       READY   STATUS    RESTARTS   AGE
 testapp-5475b846cd-p8jbv   2/2     Running   8          2d12h
 ```
 
-You can now reach the application (replace the IP address with your IP address):
+You can reach the application at the HTTP endpoint (replace the IP address with your IP address):
 
 ```
 $ curl -H 'Host: testapp-http.example.com' 192.168.20.16:80
@@ -98,3 +98,26 @@ $ curl -H 'Host: testapp-http.example.com' 192.168.20.16:80
 ```
 
 Note that the above command-line output was shortened.
+
+You can reach the application at the HTTPS endpoint (replace the IP address with your IP address):
+
+```
+$ curl -kv --resolve testapp-https.example.com:443:192.168.20.16 https://testapp-https.example.com
+```
+
+Note that the above commands sets the SNI (Server Name Indication) field correctly. Envoy proxy requires the SNI field to be set or it will close the connection abruptly:
+
+```
+$ curl -kv -H 'Host: testapp-https.example.com' https://192.168.20.16:443
+*   Trying 192.168.20.16:443...
+* Connected to 192.168.20.16 (192.168.20.16) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*  CAfile: /etc/ssl/certs/ca-certificates.crt
+*  CApath: /etc/ssl/certs
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* OpenSSL SSL_connect: Connection reset by peer in connection to 192.168.20.16:443
+* Closing connection 0
+curl: (35) OpenSSL SSL_connect: Connection reset by peer in connection to 192.168.20.16:443
+```
