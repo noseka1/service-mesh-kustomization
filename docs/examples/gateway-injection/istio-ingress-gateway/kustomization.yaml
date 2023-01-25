@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: istio-ingress
 
 resources:
-- default-smm.yaml
 - istio-ingressgateway-deploy.yaml
 - istio-ingressgateway-hpa.yaml
 - istio-ingressgateway-netpol.yaml
@@ -12,4 +11,3 @@ resources:
 - istio-ingressgateway-sds-rolebinding.yaml
 - istio-ingressgateway-sds-role.yaml
 - istio-ingressgateway-svc.yaml
-- istio-ingress-ns.yaml

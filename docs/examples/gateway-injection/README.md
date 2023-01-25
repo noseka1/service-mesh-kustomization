@@ -6,16 +6,30 @@ We will use a LoadBalancer service to expose the Service Mesh gateway to the out
 
 After deploying the custom Service Mesh ingress gateway, we will deploy a sample application that will be reachable through the gateway.
 
+Start by creating a new namespace:
+
+```
+$ oc apply -k istio-ingress-namespace
+```
+
+Wait until the namespace has joined the service mesh:
+
+```
+$ oc get -n istio-ingress smm default
+NAME      CONTROL PLANE                READY   AGE
+default   istio-system/control-plane   True    4d
+```
+
 Edit the IP address that will be assigned to the Service Mesh ingress gateway by MetalLB. Set the *spec.loadBalancerIP* field to an IP address from the IP address range that you configured in MetalLB:
 
 ```
-$ vi istio-ingress/istio-ingressgateway-svc.yaml
+$ vi istio-ingress-gateway/istio-ingressgateway-svc.yaml
 ```
 
 Deploy the custom Service Mesh ingress gateway:
 
 ```
-$ oc apply -k istio-ingress
+$ oc apply -k istio-ingress-gateway
 ```
 
 Verify that the custom Service Mesh was assigned an external IP from MetalLB:
