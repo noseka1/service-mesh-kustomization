@@ -4,8 +4,6 @@ kind: Kustomization
 namespace: istio-ingress-testapp
 
 resources:
-- default-smm.yaml
-- istio-ingress-test-ns.yaml
 - testapp-deployment.yaml
 - testapp-svc.yaml
 - testapp-http-gw.yaml
