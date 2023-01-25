@@ -1,4 +1,4 @@
-# Service Mesh ingress gateway using MetalLB
+# Exposing Service Mesh ingress gateway using MetalLB
 
 In this article, we will create a custom Service Mesh ingress gateway as decribed in the [Deploying automatic gateway injection](https://docs.openshift.com/container-platform/4.12/service_mesh/v2x/ossm-traffic-manage.html#ossm-deploying-automatic-gateway-injection_traffic-management) section of OpenShift documentation.
 
