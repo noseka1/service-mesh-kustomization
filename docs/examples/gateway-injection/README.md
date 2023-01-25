@@ -55,6 +55,20 @@ istio-ingressgateway-8cd566d7f-bdj59   1/1     Running   4          2d12h
 istio-ingressgateway-8cd566d7f-bfctz   1/1     Running   4          2d12h
 ```
 
+Create a namespace for the sample application:
+
+```
+$ oc apply -k istio-ingress-testapp-namespace
+```
+
+Verify that the namespace has joined the service mesh:
+
+```
+$ oc get smm -n istio-ingress-testapp default
+NAME      CONTROL PLANE                READY   AGE
+default   istio-system/control-plane   True    58m
+```
+
 Deploy the sample application:
 
 ```
